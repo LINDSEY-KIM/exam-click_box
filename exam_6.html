@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click event exam</title>
+
+    <style>
+        *{margin: 0; padding: 0;}
+
+        .wrap{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(145, 105, 209);
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            transition: .5s;
+        }
+
+        .active{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(220, 109, 157);
+            border-radius: 50%;
+            color: #000;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="wrap">
+
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+
+    </div>
+
+    <script>
+
+        // 풀이1
+        // (function(){
+
+        //     const boxAll = document.querySelectorAll('.box');
+
+        //     const handleClick = () => {
+        //         boxAll[0].classList.toggle('active')
+        //     }
+        //     const handleClick_2 = () => {
+        //         boxAll[1].classList.toggle('active')
+        //     }
+        //     const handleClick_3 = () => {
+        //         boxAll[2].classList.toggle('active')
+        //     }
+
+        //     boxAll[0].addEventListener('click', handleClick)
+        //     boxAll[1].addEventListener('click', handleClick_2)
+        //     boxAll[2].addEventListener('click', handleClick_3)
+
+        // })();
+
+
+        // 풀이2
+        (function(){
+
+            const boxAll = document.querySelectorAll('.box');
+
+            for(let i = 0; i < boxAll.length; i++){
+                boxAll[i].addEventListener('click', () => {
+                    boxAll[i].classList.toggle('active')
+                })
+            }
+
+        })();
+
+
+        // **주의**
+        // (function(){
+
+        //     const boxAll = document.querySelectorAll('.box');
+
+        //     const handleClick = () => {
+        //         boxAll[i].classList.toggle('active')
+        //     }
+        //     for(let i = 0; i < boxAll.length; i++){
+        //         boxAll[i].addEventListener('click', handleClick)
+        //     }
+            //반복문 속에서 정의된 i 는 외부로 빼준 함수에서 읽히지 않음
+            //for 문은 연산 시간이 느리고 전력 소모량이 높기 때문에 많이 사용하지 않음
+        // })();
+
+    </script>
+
+</body>
+</html>
